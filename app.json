@@ -1,27 +1,30 @@
 {
   "expo": {
-    "name": "todoApp",
-    "slug": "todoApp",
+    "name": "RentalZ",
+    "slug": "RentalZ",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#332424"
+      "backgroundColor": "#71F9FF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#332424"
-      }
+        "backgroundColor": "#18ed74"
+      },
+      "package": "com.duy88.RentalZ"
     },
     "web": {
       "favicon": "./assets/favicon.png"

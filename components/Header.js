@@ -14,7 +14,7 @@ import { Entypo } from "@expo/vector-icons";
 const Header = ({ handleClearTodos }) => {
   return (
     <HeaderView>
-      <HeaderTitle>Todos</HeaderTitle>
+      <HeaderTitle>RentalZ</HeaderTitle>
       <HeaderButton onPress={handleClearTodos}>
         <Entypo name="trash" size={25} color={colors.tertiary} />
       </HeaderButton>

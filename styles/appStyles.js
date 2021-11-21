@@ -11,10 +11,15 @@ import Constants from "expo-constants";
 
 // Colors
 export const colors = {
-  primary: "#332424",
-  secondary: "#4D3636",
-  tertiary: "#E6E6E6",
+  primary: "#bdfcff",
+  secondary: "#AAE2E5",
+  tertiary: "#000000",
   alternative: "#999999",
+  input: "#FFFFFF",
+  textInput: "#000000",
+  buttonPlus: "#14CDCD",
+  buttonX: "",
+  buttonCheck: "",
 };
 
 const statusBarHeight = Constants.statusBarHeight;
@@ -106,7 +111,7 @@ export const SwipedTodoText = styled(TodoText)`
 export const ModalButton = styled.TouchableOpacity`
   width: 60px;
   height: 60px;
-  background-color: ${colors.tertiary};
+  background-color: ${colors.buttonPlus};
   border-radius: 50px;
   justify-content: center;
   align-items: center;
@@ -132,12 +137,13 @@ export const ModalView = styled.View`
 export const StyledInput = styled.TextInput`
   width: 300px;
   height: 50px;
-  background-color: ${colors.tertiary};
+  background-color: ${colors.input};
   padding: 10px;
   font-size: 16px;
   border-radius: 10px;
-  color: ${colors.secondary};
+  color: ${colors.textInput};
   letter-spacing: 1px;
+  margin-top: 10px;
 `;
 
 export const ModalAction = styled.TouchableOpacity`

@@ -10,6 +10,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = ({ todos, setTodos }) => {
   // Modal visibility & input value
+  const [typeValue, setTypeValue] = useState();
+  const [bedroomValue, setBedroomValue] = useState();
+  const [priceInputValue, setPriceInputValue] = useState();
+  const [furnitureValue, setFurnitureValue] = useState();
+  const [noteValue, setNoteValue] = useState();
+  const [nameValue, setNameValue] = useState();
+  const [phoneValue, setPhoneValue] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [todoInputValue, setTodoInputValue] = useState();
 
@@ -30,6 +37,13 @@ const Home = ({ todos, setTodos }) => {
   const [todoToBeEdited, setTodoToBeEdited] = useState(null);
 
   const handleTriggerEdit = (item) => {
+    setTypeValue(item.type);
+    setBedroomValue(item.bedroom);
+    setPriceInputValue(item.price);
+    setFurnitureValue(item.furniture);
+    setNoteValue(item.note);
+    setNameValue(item.name);
+    setPhoneValue(item.phone);
     setTodoToBeEdited(item);
     setModalVisible(true);
     setTodoInputValue(item.title);
@@ -70,6 +84,20 @@ const Home = ({ todos, setTodos }) => {
       />
 
       <InputModal
+        typeValue={typeValue}
+        setTypeValue={setTypeValue}
+        bedroomValue={bedroomValue}
+        setBedroomValue={setBedroomValue}
+        priceInputValue={priceInputValue}
+        setPriceInputValue={setPriceInputValue}
+        furnitureValue={furnitureValue}
+        setFurnitureValue={setFurnitureValue}
+        noteValue={noteValue}
+        setNoteValue={setNoteValue}
+        nameValue={nameValue}
+        setNameValue={setNameValue}
+        phoneValue={phoneValue}
+        setPhoneValue={setPhoneValue}
         todoInputValue={todoInputValue}
         setTodoInputValue={setTodoInputValue}
         modalVisible={modalVisible}

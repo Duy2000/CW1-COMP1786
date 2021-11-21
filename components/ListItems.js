@@ -1,5 +1,14 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import {
+  ActivityIndicator,
+  Alert,
+  FlatList,
+  Text,
+  StyleSheet,
+  View,
+  TextInput,
+  Platform,
+} from "react-native";
 // styled components
 import {
   ListView,
@@ -10,10 +19,9 @@ import {
   SwipedTodoText,
   colors,
 } from "../styles/appStyles";
-
 import { SwipeListView } from "react-native-swipe-list-view";
 import { Entypo } from "@expo/vector-icons";
-
+import { Searchbar } from "react-native-paper";
 // Async Storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -33,13 +41,26 @@ const ListItems = ({ todos, setTodos, handleTriggerEdit }) => {
 
   // For styling currently swiped todo row
   const [swipedRow, setSwipedRow] = useState(null);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [search, setSearch] = useState("");
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
+
+  const onChangeSearch = (query) => setSearchQuery(query);
 
   return (
     <>
-      {todos.length == 0 && <TodoText>You have no todos today</TodoText>}
+      {/* search */}
+      <Searchbar
+        placeholder="Search"
+        underlineColorAndroid="transparent"
+        placeholder="Search Here"
+        style={{ marginBottom: 20 }}
+      />
+      {todos.length == 0 && <TodoText>No news today</TodoText>}
       {todos.length != 0 && (
         <SwipeListView
           data={todos}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={(data) => {
             const RowText =
               data.item.key == swipedRow ? SwipedTodoText : TodoText;
@@ -51,7 +72,13 @@ const ListItems = ({ todos, setTodos, handleTriggerEdit }) => {
                 }}
               >
                 <>
-                  <RowText>{data.item.title}</RowText>
+                  <RowText>{"Property type: " + data.item.type}</RowText>
+                  <RowText>{"Bedroom: " + data.item.bedroom}</RowText>
+                  <RowText>{"Price: " + data.item.price}$</RowText>
+                  <RowText>{"Furniture: " + data.item.furniture}</RowText>
+                  <RowText>{"Note: " + data.item.note}</RowText>
+                  <RowText>{"Reporter : " + data.item.name}</RowText>
+                  <RowText>{"Phone : " + data.item.phone}</RowText>
                   <TodoDate>{data.item.date}</TodoDate>
                 </>
               </ListView>
@@ -85,5 +112,28 @@ const ListItems = ({ todos, setTodos, handleTriggerEdit }) => {
     </>
   );
 };
+const styles = StyleSheet.create({
+  MainContainer: {
+    justifyContent: "center",
+    flex: 1,
+    margin: 5,
+  },
+
+  row: {
+    fontSize: 18,
+    padding: 12,
+  },
+
+  textInput: {
+    textAlign: "center",
+    height: 42,
+    borderWidth: 1,
+    borderColor: "#009688",
+    borderRadius: 8,
+    backgroundColor: "#FFFF",
+    marginTop: -15,
+    marginBottom: 10,
+  },
+});
 
 export default ListItems;
